@@ -27,5 +27,21 @@ router.post('/juggling-balls-answer', function (req, res) {
  }
 
 })
+router.post('/juggling-parties-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'juggling-balls'
+  var jugglingParties = req.session.data['juggling-parties']
+
+  // Check whether the variable matches a condition
+  if (jugglingParties == "No"){
+    // Send user to next page
+    res.redirect('/check-your-answers')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('/ineligible')
+  }
+
+})
 
 module.exports = router
